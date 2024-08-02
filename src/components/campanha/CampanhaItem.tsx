@@ -17,7 +17,7 @@ export default function CampanhaItem() {
     
     return (
         <div
-            className=" rounded-xl overflow-hidden bg-zinc-800 cursor-pointer select-none"
+            className=" rounded-xl overflow-hidden bg-zinc-800 cursor-pointer select-none hover:bg-zinc-700/90"
         >
             <Link href="/votar">
             
