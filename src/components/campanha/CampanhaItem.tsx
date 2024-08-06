@@ -1,15 +1,21 @@
 'use client'
 import { axiosCliente } from "@/app/data/contexts/axios";
+import useLocalStorage from "@/app/data/hooks/useLocalStorage";
 import { Campanha } from "@/model/campanha";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function CampanhaItem() {
     const [campanhas, setCampanhas ] = useState<Campanha | null>(null);
+    const {get, set} = useLocalStorage()
+    
     const getCampanha = async () => {
         await axiosCliente.get('/campanha').then((res) => setCampanhas(res.data))
     }
-    
+
+    async function entrar(campanha: Campanha) {
+        set('campanha', campanha)
+    }
 
     useEffect(() => {
         getCampanha()
@@ -19,7 +25,7 @@ export default function CampanhaItem() {
         <div
             className=" rounded-xl overflow-hidden bg-zinc-800 cursor-pointer select-none hover:bg-zinc-700/90"
         >
-            <Link href="/votar">
+            <Link href="/votar" onClick={() => entrar({token: campanhas?.token})}>
             
                 <div className="flex flex-col p-4 gap-2">
                     <div className="flex flex-grow justify-items-end">
