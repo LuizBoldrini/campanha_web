@@ -3,30 +3,36 @@ import { axiosCliente } from "@/app/data/contexts/axios";
 import useLocalStorage from "@/app/data/hooks/useLocalStorage";
 import { Campanha } from "@/model/campanha";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import Carregando from "../shared/Carregando";
 
 export default function CampanhaItem() {
     const [campanhas, setCampanhas ] = useState<Campanha | null>(null);
+    const [loading, setLoading] = useState(true)
     const {get, set} = useLocalStorage()
     
     const getCampanha = async () => {
-        await axiosCliente.get('/campanha').then((res) => setCampanhas(res.data))
+        await axiosCliente.get('/campanha', {timeout: 5000}).then((res) => setCampanhas(res.data))
+        setLoading(false)
     }
 
     async function entrar(campanha: Campanha) {
-        set('campanha', campanha)
+        set('campanha', JSON.stringify(campanha))
     }
 
     useEffect(() => {
         getCampanha()
     }, [])
+
+    if(loading){
+        return <Carregando />
+      }
     
     return (
         <div
             className=" rounded-xl overflow-hidden bg-zinc-800 cursor-pointer select-none hover:bg-zinc-700/90"
         >
             <Link href="/votar" onClick={() => entrar({token: campanhas?.token})}>
-            
                 <div className="flex flex-col p-4 gap-2">
                     <div className="flex flex-grow justify-items-end">
                         <span className="text-xl font-black">Nome da campanha: </span>
@@ -41,7 +47,6 @@ export default function CampanhaItem() {
                         <div className="flex flex-col gap-1 items-center md:items-start">
                             <span className="text-xs text-zinc-400 flex-1">Hora de inicio: {campanhas?.horaini?.toString()}</span>
                             <span className="text-xs text-zinc-400 flex-1">Data de inicio: {campanhas?.dataini?.toString()}</span>
-
                         </div>
                         <div className="flex flex-col gap-1 items-center md:items-end">
                             <span className="text-xs text-zinc-400 flex-1">Hora de término: {campanhas?.horafinal?.toString()}</span>

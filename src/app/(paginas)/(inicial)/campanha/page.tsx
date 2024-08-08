@@ -14,9 +14,7 @@ export default function PaginaCampanha() {
                     gap-10 lg:gap-0 py-10
                 "
             >
-                <Suspense fallback={<div>Carregando...</div>}>
-                    <NossasCampanhas />
-                </Suspense>
+                <NossasCampanhas />
             </div>
         </div>
     )
