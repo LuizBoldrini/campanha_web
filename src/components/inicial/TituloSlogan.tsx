@@ -1,10 +1,10 @@
 'use client'
-import { IconDashboard } from '@tabler/icons-react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function TituloSlogan() {
     return (
-        <div className="relative h-[700px]">
+        <div className="relative h-[500px]">
             <div
                 className="
                     flex flex-col items-center
@@ -12,8 +12,8 @@ export default function TituloSlogan() {
                     bg-black/80 md:bg-transparent md:bg-gradient-to-r from-black/30 via-black/90 to-black/30
                 "
             >
-                <div className="container flex-1 flex flex-col justify-center items-center gap-5 z-50">
-                    <IconDashboard size={200} stroke={0.4} className="text-zinc-500"/>
+                <div className="container flex-1 flex flex-col justify-start items-center gap-4 z-50 py-4">
+                    <Image src="/Logo.png" alt="Logo" width={200} height={200} className="rounded-lg"/>
                     <h1 className="flex flex-col items-center">
                         <span className="text-gradient text-5xl sm:text-5xl md:text-7xl lg:text-7xl font-black pb-1">
                             Votação online
