@@ -1,6 +1,5 @@
 import NossasCampanhas from "@/components/campanha/NossasCampanhas";
 import MenuSuperior from "@/components/shared/MenuSuperior";
-import { Suspense } from "react";
 
 export default function PaginaCampanha() {
     return (
