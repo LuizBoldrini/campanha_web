@@ -1,11 +1,16 @@
 export default interface Usuario {
-    codigoassociado?: string
-    nome?: string
-    matricula?: string
+    erro?: string
+    mensagem?: string
     cpf: string
-    email?: string
-    telefone?: string
-    whatsapp?: string
-    nascimento: string
-    detalhe?: string
+    Nascimento: string
+    Associado: {
+        codigoassociado?: string
+        nome?: string
+        cpf: string
+        email?: string
+        telefone?: string
+        whatsapp?: string
+        nascimento: string
+        idassociado?: number
+    }[]
 }

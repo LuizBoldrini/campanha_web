@@ -1,26 +1,26 @@
-'use client';
+'use client'
 
-import MenuSuperior from '@/components/shared/MenuSuperior';
-import Pagina from '@/components/shared/Pagina';
-import { useAuth } from '@/app/data/contexts/AuthContext';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import Carregando from '@/components/shared/Carregando';
+import MenuSuperior from '@/components/shared/MenuSuperior'
+import Pagina from '@/components/shared/Pagina'
+import { useAuth } from '@/app/data/contexts/AuthContext'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import Carregando from '@/components/shared/Carregando'
 
 export default function ProtectedLayout({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth();
-  const router = useRouter();
-  const [isMounted, setIsMounted] = useState(false);
+  const { user } = useAuth()
+  const router = useRouter()
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
     if (isMounted && !user) {
-      router.replace('/entrar');
+      router.replace('/entrar')
     }
-  }, [isMounted, user, router]);
+  }, [isMounted, user, router])
 
   if (!isMounted || !user) {
     return (
@@ -33,5 +33,5 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
       <MenuSuperior />
       <Pagina>{children}</Pagina>
     </div>
-  );
+  )
 }
