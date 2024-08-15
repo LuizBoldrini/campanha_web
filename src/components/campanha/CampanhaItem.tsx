@@ -12,7 +12,7 @@ export default function CampanhaItem() {
     const {get, set, remove} = useLocalStorage()
 
     useEffect(() => {
-        if(get('campanha')) {
+        if(get('campanha' )) {
             remove('campanha')
         }
     }, [get, remove])
@@ -36,7 +36,7 @@ export default function CampanhaItem() {
     }, [])
 
     async function entrar(campanha: Campanha['Campanha'][0]) {
-        set('campanha', campanha)
+        set('campanha', JSON.stringify(campanha))
     }
     
     if(loading){
@@ -47,6 +47,7 @@ export default function CampanhaItem() {
         <div className="flex flex-col gap-4">
             {campanhas.map((campanha, i) => (
             <div
+                key={campanha.ideleicao}
                 className=" rounded-xl overflow-hidden bg-zinc-800 cursor-pointer select-none hover:bg-zinc-700/90"
             >
                 <Link href="/votar" onClick={() => entrar(campanha)}>
