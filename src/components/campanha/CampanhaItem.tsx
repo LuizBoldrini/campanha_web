@@ -52,7 +52,7 @@ export default function CampanhaItem() {
             {campanhas.map((campanha, i) => (
             <div
                 key={campanha.ideleicao}
-                className=" rounded-xl overflow-hidden bg-zinc-800 cursor-pointer select-none hover:bg-zinc-700/90"
+                className=" rounded-xl overflow-hidden bg-zinc-800 cursor-pointer select-none border border-transparent hover:bg-zinc-700/90 active:border-zinc-500"
             >
                 <Link href="/votar" onClick={() => entrar(campanha)}>
                     <div className="flex flex-col p-4 gap-2">

@@ -25,9 +25,8 @@ export default function TituloSlogan() {
                     <Link
                         href="/campanha"
                         className="
-                            bg-gradient-to-r from-green-500 to-green-600
-                            text-white font-semibold text-base md:text-lg
-                            py-2 px-4 rounded-md hover:from-green-600 hover:to-green-700
+                            bg-green-600 text-white font-semibold text-base md:text-lg
+                            py-2 px-4 rounded-md hover:bg-green-700 active:bg-green-800
                         "
                     >
                         Votar Agora

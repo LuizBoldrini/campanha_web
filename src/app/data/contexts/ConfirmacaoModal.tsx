@@ -16,9 +16,8 @@ export default function ConfirmacaoModal({ chapa, onConfirm, onCancel }: Confirm
                     <button
                         onClick={onConfirm}
                         className="
-                            bg-gradient-to-r from-green-500 to-green-600
-                            text-white font-semibold text-base md:text-lg
-                            py-2 px-4 rounded-md hover:from-green-600 hover:to-green-700
+                            bg-green-600 text-white font-semibold text-base md:text-lg
+                            py-2 px-4 rounded-md hover:bg-green-700 active:bg-green-800
                         "
                     >
                         Confirmar
@@ -26,9 +25,8 @@ export default function ConfirmacaoModal({ chapa, onConfirm, onCancel }: Confirm
                     <button
                         onClick={onCancel}
                         className="
-                            bg-gradient-to-r from-red-500 to-red-600
-                            text-white font-semibold text-base md:text-lg
-                            py-2 px-4 rounded-md hover:from-red-600 hover:to-red-700
+                            bg-red-600 text-white font-semibold text-base md:text-lg
+                            py-2 px-4 rounded-md hover:bg-red-700 active:bg-red-800
                         "
                     >
                         Cancelar

@@ -114,7 +114,7 @@ export default function ChapaItem() {
             <button
                 onClick={() => setShowConfirmation(true)}
                 disabled={!selectedChapa}
-                className={`button ${selectedChapa ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700' : 'bg-gray-400 text-gray-700 cursor-not-allowed'}`}
+                className={`button ${selectedChapa ? ' text-white font-semibold text-base md:text-lg bg-green-500 hover:bg-green-700 active:bg-green-800' : 'bg-gray-500 text-gray-700 font-semibold text-base md:text-lg cursor-not-allowed'}`}
             >
                 Confirmar Seleção
             </button>
