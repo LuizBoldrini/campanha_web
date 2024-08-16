@@ -71,12 +71,20 @@ export default function SucessoPage() {
                 </div>
                 <div className='flex gap-5 pt-8'>
                 <button onClick={() => gerarPDF(comprovante)}
-                    className="button bg-green-700 flex-1 transition duration-300 ease-in-out active:bg-green-900">
+                    className="
+                        bg-gradient-to-r from-green-500 to-green-600
+                        text-white font-semibold text-base md:text-lg
+                        py-2 px-4 rounded-md hover:from-green-600 hover:to-green-700    
+                    ">
                     Baixar Comprovante
                 </button>
                 <button
                 onClick={() => handleNavigate('/campanha')}
-                className="button bg-blue-600 flex-1 transition duration-300 ease-in-out active:bg-blue-900"
+                className="
+                    bg-gradient-to-r from-blue-500 to-blue-600
+                    text-white font-semibold text-base md:text-lg
+                    py-2 px-4 rounded-md hover:from-blue-600 hover:to-blue-700
+                "
               >
                 Campanhas Disponívei
               </button>
