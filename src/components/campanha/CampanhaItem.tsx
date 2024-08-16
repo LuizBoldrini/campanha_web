@@ -15,6 +15,10 @@ export default function CampanhaItem() {
         if(get('campanha' )) {
             remove('campanha')
         }
+        if(get('comprovante' )) {
+            remove('comprovante')
+        }
+        
     }, [get, remove])
     
     useEffect(() => {
