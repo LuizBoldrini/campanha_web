@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Logo from '@/components/shared/Logo'
 import { useAuth } from '@/app/data/contexts/AuthContext'
 import CpfUtils from '../utils/CpfUtils'
@@ -13,12 +13,28 @@ export default function FormUsuario() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const router = useRouter()
 
+  const cpfRef = useRef<HTMLInputElement>(null)
+  const nascimentoRef = useRef<HTMLInputElement>(null)
+  const entrarRef = useRef<HTMLButtonElement>(null)
+
   const handleLogin = async () => {
     try {
       await login(cpf, nascimento)
       setErrorMessage(null)
     } catch (error) {
       setErrorMessage('Falha ao fazer login. Verifique suas credenciais e tente novamente.')
+    }
+  }
+
+  const handleKey = (e: React.KeyboardEvent, nextRef: React.RefObject<HTMLElement> | null) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      if (nextRef) {
+        nextRef.current?.focus() 
+        if (nextRef === entrarRef) {
+          (nextRef.current as HTMLButtonElement).click()
+        }
+      }
     }
   }
 
@@ -40,6 +56,8 @@ export default function FormUsuario() {
               value={CpfUtils.formatar(cpf)}
               onChange={(e) => setCpf(CpfUtils.desformatar(e.target.value))}
               placeholder="CPF"
+              ref={cpfRef}
+              onKeyDown={(e) => handleKey(e, nascimentoRef)}
               className="bg-zinc-900 px-4 py-2 rounded"
             />
             <span>Nascimento</span>
@@ -48,6 +66,8 @@ export default function FormUsuario() {
               value={NascimentoUtils.formatar(nascimento.toString())}
               onChange={(e) => setNascimento(e.target.value)}
               placeholder="Data de Nascimento"
+              ref={nascimentoRef}
+              onKeyDown={(e) => handleKey(e, entrarRef)}
               className="bg-zinc-900 px-4 py-2 rounded"
             />
             {errorMessage && (
@@ -55,14 +75,15 @@ export default function FormUsuario() {
             )}
             <div className="flex gap-5">
               <button
+                ref={entrarRef}
                 onClick={handleLogin}
-                className="button bg-green-600 flex-1"
+                className="button bg-green-600 flex-1 hover:bg-green-700 active:bg-green-800"
               >
                 Entrar
               </button>
               <button
                 onClick={() => router.push('/')}
-                className="button flex-1"
+                className="button flex-1 hover:bg-zinc-700 active:bg-zinc-800"
               >
                 Cancelar
               </button>
