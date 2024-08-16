@@ -23,20 +23,21 @@ export default function Opcao(props: OpcaoProps) {
     return (
         <div
             className={`
-                flex flex-col items-center cursor-pointer select-none rounded-lg border w-[220px] h-[280px]
+                flex flex-col items-center cursor-pointer select-none rounded-lg border w-[280px]
                 ${props.selecionado ? 'border-green-400' : 'border-zinc-700'} overflow-hidden
             `}
             onClick={() => props.onClick(props.chapa)}
         >
+            <span className=" flex flex-col p-2">{props.chapa.nome}</span>
             {imgError ? (
-                <div className="flex items-center justify-center w-full h-full bg-zinc-900 text-zinc-500">
+                <div className="flex items-center justify-center w-full h-[220px] bg-zinc-900 text-zinc-500">
                     <IconPhoto size={150} />
                 </div>
             ) : (
                 <img
                     src={`data:image/jpeg;base64,${props.chapa.foto}`}
                     alt={props.chapa.nome}
-                    style={{ width: '220px', height: '220px', objectFit: 'cover' }}
+                    style={{ width: '240px', height: '220px', objectFit: 'cover' }}
                     onError={() => setImgError(true)}
                 />
             )}
@@ -47,8 +48,9 @@ export default function Opcao(props: OpcaoProps) {
                 `}
             >
                 <div className="flex flex-col items-center">
-                    <span>{props.chapa.candidato}</span>
-                    <span>{props.chapa.nome}</span>
+                    <span className=" flex flex-col pb-2">{props.chapa.candidato}</span>
+                    <span>{props.chapa.candidatodesc}</span>
+                    {props.chapa.chapadesc && <span>{props.chapa.chapadesc}</span>}
                 </div>
             </div>
         </div>
