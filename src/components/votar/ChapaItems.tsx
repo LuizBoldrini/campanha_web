@@ -1,19 +1,22 @@
 'use client'
 import { useEffect, useState } from "react"
 import { axiosCliente } from "@/app/data/contexts/axios"
+import { useRouter } from "next/navigation"
 import useLocalStorage from "@/app/data/hooks/useLocalStorage"
-import { Chapa } from "@/model/chapa"
+
 import Carregando from "../shared/Carregando"
 import Opcao from "../shared/Opcao"
 import ConfirmacaoModal from "@/app/data/contexts/ConfirmacaoModal"
-import { useAuth } from "@/app/data/contexts/AuthContext"
 import ResponseModal from "@/app/data/contexts/ResponseModal"
+import { useAuth } from "@/app/data/contexts/AuthContext"
+import { Chapa } from "@/model/chapa"
 
 export default function ChapaItem() {
     const [chapas, setChapas] = useState<Chapa['Chapa'][]>([])
     const [loading, setLoading] = useState(true)
-    const { get } = useLocalStorage()
+    const { get, set } = useLocalStorage()
     const { user } = useAuth()
+    const router = useRouter()
 
     const [responseMessage, setResponseMessage] = useState<string | null>(null)
     const [showResponse, setShowResponse] = useState(false)
@@ -70,9 +73,11 @@ export default function ChapaItem() {
                 const data = response.data
                 
                 if(data.mensagem === 'Você já votou nesta eleição.') {
-                    console.log(data.mensagem)
                     setResponseMessage(data.mensagem)
-                    setShowResponse(true)
+                    setShowResponse(true)              
+                } else {
+                    set('comprovante', JSON.stringify(data))
+                    router.push('/votar/sucesso')
                 }
 
             } catch (error) {
@@ -87,11 +92,6 @@ export default function ChapaItem() {
     const handleCancel = () => {
         setShowConfirmation(false)
         setSelectedChapa(null)
-    }
-
-    const handleResponseClose = () => {
-        setShowResponse(false)
-        setResponseMessage(null)
     }
 
     if (loading) {
@@ -130,7 +130,6 @@ export default function ChapaItem() {
             {showResponse && responseMessage && (
                 <ResponseModal
                     message={responseMessage}
-                    onClose={handleResponseClose}
                 />
             )}
         </div>
