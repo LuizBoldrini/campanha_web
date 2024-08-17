@@ -30,10 +30,7 @@ export default function FormUsuario() {
     if (e.key === 'Enter') {
       e.preventDefault()
       if (nextRef) {
-        nextRef.current?.focus() 
-        if (nextRef === entrarRef) {
-          (nextRef.current as HTMLButtonElement).click()
-        }
+        nextRef.current?.focus()
       }
     }
   }
@@ -75,7 +72,6 @@ export default function FormUsuario() {
             )}
             <div className="flex gap-5">
               <button
-                ref={entrarRef}
                 onClick={handleLogin}
                 className="button bg-green-600 flex-1 hover:bg-green-700 active:bg-green-800"
               >

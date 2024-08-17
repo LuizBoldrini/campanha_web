@@ -1,27 +1,21 @@
-export default class CpfUtils {
-    static formatar(cpf: string): string {
-        if (!cpf) return ''
-        const numeros = this.desformatar(cpf)
-        return numeros.length <= 11
-            ? this.substituirNumeros(numeros, 'xxx.xxx.xxx-xx')
-            : this.substituirNumeros(numeros, 'xx.xxx.xxx/xxxx-xx')
+const formatarCPF = (cpf: string): string => {
+    cpf = cpf.replace(/\D/g, '')
+    if (cpf.length > 11) {
+        cpf = cpf.substring(0, 11)
     }
-
-    static desformatar(cpf: string): string {
-        if (!cpf) return ''
-        return cpf.replace(/\D/g, '').slice(0, 14)
-    }
-
-    private static substituirNumeros(cpf: string, ref: string): string {
-        let formatado = cpf
-            .split('')
-            .reduce((cpf, numero) => {
-                return cpf.replace('x', numero)
-            }, ref)
-            .replace(/x/g, '')
-        if (cpf.length <= 3) formatado = formatado.replace('.', '').replace(' ', '')
-        if (cpf.length <= 6) formatado = formatado.replace('.', '').replace(' ', '')
-        if (cpf.length <= 9) formatado = formatado.replace('-', '')
-        return formatado
-    }
-}
+    
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2')
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2')
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+    
+    return cpf
+  }
+  
+  const desformatarCPF = (cpf: string): string => {
+    return cpf.replace(/\D/g, '')
+  }
+  
+  export default {
+    formatar: formatarCPF,
+    desformatar: desformatarCPF,
+  }

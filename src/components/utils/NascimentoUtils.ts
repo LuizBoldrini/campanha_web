@@ -1,26 +1,17 @@
 export default class NascimentoUtils {
-    static formatar(nascimento: string): string {
-        if (!nascimento) return ''
-        const numeros = this.desformatar(nascimento)
-        return numeros.length <= 8
-            ? this.substituirNumeros(numeros, 'xx/xx/xxxx')
-            : this.substituirNumeros(numeros, 'xx/xx/xxxx')
+    static formatar(data: string): string {
+      data = data.replace(/\D/g, '')
+  
+      if (data.length > 8) {
+            data = data.slice(0, 8)
+      }
+  
+      if (data.length > 4) {
+            data = data.replace(/(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3')
+      } else if (data.length > 2) {
+            data = data.replace(/(\d{2})(\d{0,2})/, '$1/$2')
+      }
+  
+      return data
     }
-
-    static desformatar(nascimento: string): string {
-        if (!nascimento) return ''
-        return nascimento.replace(/\D/g, '').slice(0, 8)
-    }
-
-    private static substituirNumeros(nascimento: string, ref: string): string {
-        let formatado = nascimento
-            .split('')
-            .reduce((nascimento, numero) => {
-                return nascimento.replace('x', numero)
-            }, ref)
-            .replace(/x/g, '')
-        if (nascimento.length <= 2) formatado = formatado.replace('/', '').replace(' ', '')
-        if (nascimento.length <= 4) formatado = formatado.replace('/', '').replace(' ', '')
-        return formatado
-    }
-}
+  }
