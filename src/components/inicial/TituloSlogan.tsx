@@ -15,7 +15,7 @@ export default function TituloSlogan() {
                 <div className="container flex-1 flex flex-col justify-start items-center gap-4 z-50 py-4">
                     <Image src="/Logo.png" alt="Logo" width={200} height={200} className="rounded-lg"/>
                     <h1 className="flex flex-col items-center">
-                        <span className="text-gradient text-5xl sm:text-5xl md:text-7xl lg:text-7xl font-black pb-1">
+                        <span className="text-4xl font-black">
                             Votação online
                         </span>
                     </h1>
