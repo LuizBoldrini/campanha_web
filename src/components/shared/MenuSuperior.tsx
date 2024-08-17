@@ -16,7 +16,7 @@ export default function MenuSuperior() {
                     {user ? (
                         <MenuUsuario usuario={user} />
                     ) : (
-                        <Link href="/entrar">Entrar</Link>
+                        <></>
                     )}
                 </div>
             </nav>
