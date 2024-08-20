@@ -55,6 +55,7 @@ export default function ChapaItem() {
 
     const handleConfirm = async () => {
         if (selectedChapa) {
+            setLoading(true)
             try {
                 const campanhaJson = get('campanha')
                 const campanha = campanhaJson ? JSON.parse(campanhaJson) : null
@@ -74,15 +75,17 @@ export default function ChapaItem() {
                 
                 if(data.mensagem === 'Você já votou nesta eleição.') {
                     setResponseMessage(data.mensagem)
-                    setShowResponse(true)              
+                    setShowResponse(true)            
                 } else {
                     set('comprovante', JSON.stringify(data))
                     router.push('/votar/sucesso')
                 }
-
             } catch (error) {
                 console.error('Erro ao confirmar seleção:', error)
+                setResponseMessage('Ocorreu um erro ao processar seu voto. Por favor, tente novamente.')
+                setShowResponse(true)
             } finally {
+                setLoading(false)
                 setShowConfirmation(false)
                 setSelectedChapa(null)
             }
@@ -120,18 +123,20 @@ export default function ChapaItem() {
             </button>
 
             {showConfirmation && selectedChapa && (
-                <ConfirmacaoModal
-                    chapa={selectedChapa}
-                    onConfirm={handleConfirm}
-                    onCancel={handleCancel}
-                />
-            )}
-            
-            {showResponse && responseMessage && (
-                <ResponseModal
-                    message={responseMessage}
-                />
-            )}
-        </div>
-    )
+            <ConfirmacaoModal
+                chapa={selectedChapa}
+                onConfirm={handleConfirm}
+                onCancel={handleCancel}
+            />
+        )}
+
+        {showResponse && responseMessage && (
+            <ResponseModal
+                message={responseMessage}
+            />
+        )}
+
+        {loading && <Carregando />}
+    </div>
+)
 }
