@@ -46,27 +46,27 @@ export default function SucessoPage() {
                     </div>
                     <div className='flex flex-col gap-3'>
                         <span className='text-xs uppercase text-zinc-400'>Email</span>
-                        <span className='flex gap-2 flex-wrap text-sm text-white'>{comprovante.Comprovante[0]?.email}</span>
+                        <span className='text-sm text-white break-all'>{comprovante.Comprovante[0]?.email}</span>
                     </div>
                     <div className='flex flex-col gap-3'>
                         <span className='text-xs uppercase text-zinc-400'>Matrícula</span>
-                        <span className='flex gap-2 flex-wrap text-sm text-white'>{comprovante.Comprovante[0]?.matricula}</span>
+                        <span className='text-sm text-white break-all'>{comprovante.Comprovante[0]?.matricula}</span>
                     </div>
                     <div className='flex flex-col gap-3'>
                         <span className='text-xs uppercase text-zinc-400'>Eleição</span>
-                        <span className='flex gap-2 flex-wrap text-sm text-white'>{comprovante.Comprovante[0]?.eleicao}</span>
+                        <span className='text-sm text-white break-all'>{comprovante.Comprovante[0]?.eleicao}</span>
                     </div>
                     <div className='flex flex-col gap-3'>
                         <span className='text-xs uppercase text-zinc-400'>Chave</span>
-                        <span className='flex gap-2 flex-wrap text-sm text-white'>{comprovante.Comprovante[0]?.chave}</span>
+                        <span className='text-sm text-white break-all'>{comprovante.Comprovante[0]?.chave}</span>
                     </div>
                     <div className='flex flex-col gap-3'>
                         <span className='text-xs uppercase text-zinc-400'>Data</span>
-                        <span className='flex gap-2 flex-wrap text-sm text-white'>{comprovante.Comprovante[0]?.data?.toString()}</span>
+                        <span className='text-sm text-white'>{comprovante.Comprovante[0]?.data?.toString()}</span>
                     </div>
                     <div className='flex flex-col gap-3'>
                         <span className='text-xs uppercase text-zinc-400'>Hora</span>
-                        <span className='flex gap-2 flex-wrap text-sm text-white'>{comprovante.Comprovante[0]?.hora?.toString()}</span>
+                        <span className='text-sm text-white'>{comprovante.Comprovante[0]?.hora?.toString()}</span>
                     </div>
                 </div>
                 <div className='flex gap-5 pt-8'>
@@ -84,7 +84,7 @@ export default function SucessoPage() {
                     py-2 px-4 rounded-md hover:bg-zinc-700 active:bg-zinc-800
                 "
               >
-                Campanhas Disponívei
+                Campanhas Disponíveis
               </button>
                 </div>
             </div>
