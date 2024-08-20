@@ -11,7 +11,7 @@ export default function Titulo(props: TituloProps) {
                     {props.tag}
                 </div>
             )}
-            <h2 className="text-xl font-bold text-gradient sm:w-100 md:w-70 lg:w-30 break-words">
+            <h2 className="text-xl font-bold text-gradient sm:w-100 md:w-70 lg:w-30 break-words text-center">
                 {props.principal}
             </h2>
             
