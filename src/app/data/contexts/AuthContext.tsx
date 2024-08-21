@@ -51,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             
             set('usuario', JSON.stringify(data))
             setUser(data)
-            router.push('/votar')
+            router.push('/verificar')
         } catch (error) {
             console.error('Erro ao fazer login:', error)
             throw error
@@ -61,7 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const logout = () => {
         localStorage.removeItem('usuario')
         setUser(null);
-        router.push('/entrar')
+        router.push('/campanha')
     }
 
     return (
