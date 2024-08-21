@@ -32,7 +32,7 @@ export default function MenuUsuario(props: MenuUsuarioProps) {
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className=' bg-zinc-800'>
-                <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
+                <DropdownMenuItem onClick={logout} className='cursor-pointer border border-transparent hover:bg-zinc-700/90 active:border-zinc-500'>Logout</DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     ) : null
