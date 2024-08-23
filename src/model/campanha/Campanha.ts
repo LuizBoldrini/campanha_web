@@ -10,5 +10,6 @@ export default interface Campanha {
         detalhes?: string
         eleicao?: string
         ideleicao?: number
+        status?: string
     }[]
 }
