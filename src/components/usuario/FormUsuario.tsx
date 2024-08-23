@@ -22,7 +22,11 @@ export default function FormUsuario() {
       await login(cpf, nascimento)
       setErrorMessage(null)
     } catch (error) {
-      setErrorMessage('Falha ao fazer login. Verifique suas credenciais e tente novamente.')
+      if(error instanceof Error) {
+        setErrorMessage(error.message)
+      } else {
+        setErrorMessage('Falha ao fazer login. Verifique suas credenciais e tente novamente.')
+      }
     }
   }
 

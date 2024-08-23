@@ -46,7 +46,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
             const data = response.data
             if (data.erro === 'True') {
-                throw new Error('Falha ao fazer login. Verifique suas credenciais e tente novamente.')
+                throw new Error(data.mensagem)
             }
             
             set('usuario', JSON.stringify(data))

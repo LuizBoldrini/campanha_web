@@ -6,6 +6,7 @@ export default interface Usuario {
     Associado: {
         codigoassociado?: string
         nome?: string
+        matricula?: string
         cpf: string
         email?: string
         telefone?: string
