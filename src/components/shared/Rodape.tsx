@@ -15,8 +15,8 @@ export default function Rodape() {
                     <div className="flex flex-col gap-1 items-center md:items-start">
                         <span className="text-2xl text-zinc-300 font-bold mb-2.5">Sobre</span>
                         <span className="text-sm text-zinc-400">Nossa História</span>
-                        <span className="text-sm text-zinc-400">Política de Privacidade</span>
-                        <span className="text-sm text-zinc-400">Termos de Uso</span>
+                        <span className="text-sm text-zinc-400"><Link href="/politicaPrivacidade">Política de Privacidade</Link></span>
+                        <span className="text-sm text-zinc-400"><Link href="/termoDeUso">Termos de Uso</Link></span>
                     </div>
                     <div className="flex flex-col gap-1 items-center md:items-start">
                         <span className="text-2xl text-zinc-300 font-bold mb-2.5">Contato</span>
@@ -38,8 +38,8 @@ export default function Rodape() {
                     </div>
                     <div className="flex flex-col md:flex-row items-center gap-1.5 text-zinc-400 text-sm">
                         <div className="flex gap-1.5">
-                            <span>Feito </span>
-                            <span>em Agosto {new Date().getFullYear()}</span>
+                            <span>Desenvolvido por </span>
+                            <span><strong>EasyVote Systems</strong></span>
                         </div>
                         <span className="hidden md:inline-block">-</span>
                         <span>Todos os direitos reservados</span>
