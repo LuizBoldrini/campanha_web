@@ -20,6 +20,9 @@ export default function CampanhaItem() {
         if (get('comprovante')) {
             remove('comprovante')
         }
+        if (get('usuario')) {
+            remove('usuario')
+        }
     }, [get, remove])
 
     useEffect(() => {
