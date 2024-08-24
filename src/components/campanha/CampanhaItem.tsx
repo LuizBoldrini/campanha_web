@@ -5,8 +5,10 @@ import { Campanha } from "@/model/campanha"
 import { useEffect, useState } from "react"
 import Carregando from "../shared/Carregando"
 import Link from "next/link"
+import { useAuth } from "@/app/data/contexts/AuthContext"
 
 export default function CampanhaItem() {
+    const { logout } = useAuth()
     const [campanhas, setCampanhas] = useState<Campanha['Campanha']>([])
     const [loading, setLoading] = useState(true)
     const { get, set, remove } = useLocalStorage()
@@ -21,7 +23,7 @@ export default function CampanhaItem() {
             remove('comprovante')
         }
         if (get('usuario')) {
-            remove('usuario')
+            logout
         }
     }, [get, remove])
 
