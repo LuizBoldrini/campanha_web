@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-br" className="dark">
       <body className={`${inter.className} overflow-x-hidden`}>
         <link rel="icon" href="/favicon.ico" sizes="any" className="rounded-full" />
         <AuthProvider>
