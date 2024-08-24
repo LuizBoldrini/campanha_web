@@ -41,7 +41,7 @@ export default function CampanhaItem() {
     }, [])
 
     function handleClick(campanha: Campanha['Campanha'][0]) {
-        if (campanha.status === 'Fechado') {
+        if (campanha.status === 'Fechada') {
             setSelectedCampanha(campanha)
             setShowModal(true)
         } else {

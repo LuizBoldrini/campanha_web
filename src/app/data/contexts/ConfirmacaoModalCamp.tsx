@@ -10,7 +10,9 @@ export default function ConfirmacaoModalCamp({ campanha, onConfirm, onCancel }: 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50">
             <div className="bg-zinc-800 p-6 rounded shadow-lg text-center">
-                <span>A campanha {campanha.eleicao} está fechada e não pode ser selecionada.</span>
+                <span>A campanha: </span>
+                <span className="font-bold">{campanha.eleicao}</span>
+                <span> está fechada e não pode ser selecionada.</span>
                 <div className="flex justify-center gap-4 mt-4">
                     <button
                         onClick={onConfirm}
