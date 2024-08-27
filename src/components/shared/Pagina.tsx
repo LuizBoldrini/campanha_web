@@ -2,7 +2,7 @@ import Rodape from "./Rodape"
 
 export interface PaginaProps {
   children: React.ReactNode
-  bgClass: string
+  bgClass?: string
 }
 export default function Pagina({
   children,
