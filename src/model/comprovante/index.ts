@@ -1,3 +1,3 @@
-import Comprovante from './Comprovante'
+import Comprovante from "./Comprovante"
 
 export type { Comprovante }

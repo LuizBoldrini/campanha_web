@@ -1,5 +1,5 @@
-import MenuSuperior from "@/components/shared/MenuSuperior";
-import PoliticaPrivacidade from "@/components/sobre/PoliticaPrivacidade";
+import MenuSuperior from "@/components/shared/MenuSuperior"
+import PoliticaPrivacidade from "@/components/sobre/PoliticaPrivacidade"
 
 export default function Home() {
   return (
@@ -9,5 +9,5 @@ export default function Home() {
         <PoliticaPrivacidade />
       </div>
     </div>
-  );
+  )
 }

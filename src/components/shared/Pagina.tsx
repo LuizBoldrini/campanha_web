@@ -1,13 +1,17 @@
-import Rodape from './Rodape'
+import Rodape from "./Rodape"
 
 export interface PaginaProps {
-    children: React.ReactNode
+  children: React.ReactNode
+  bgClass: string
 }
-export default function Pagina(props: PaginaProps) {
-    return (
-        <div className="flex flex-col min-h-screen w-screen bg-zinc-900">
-            <main className='flex-grow'>{props.children}</main>
-            <Rodape />
-        </div>
-    )
+export default function Pagina({
+  children,
+  bgClass = "bg-zinc-900",
+}: PaginaProps) {
+  return (
+    <div className={`flex flex-col min-h-screen w-screen ${bgClass}`}>
+      <main className="flex-grow">{children}</main>
+      <Rodape />
+    </div>
+  )
 }

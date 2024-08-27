@@ -1,28 +1,28 @@
-"use client";
-import React, { useState, } from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+"use client"
+import React, { useState } from "react"
+import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
 
 type Card = {
-  id: number;
-  content: JSX.Element | React.ReactNode | string;
-  className: string;
-  thumbnail: string;
-};
+  id: number
+  content: JSX.Element | React.ReactNode | string
+  className: string
+  thumbnail: string
+}
 
 export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
-  const [selected, setSelected] = useState<Card | null>(null);
-  const [lastSelected, setLastSelected] = useState<Card | null>(null);
+  const [selected, setSelected] = useState<Card | null>(null)
+  const [lastSelected, setLastSelected] = useState<Card | null>(null)
 
   const handleClick = (card: Card) => {
-    setLastSelected(selected);
-    setSelected(card);
-  };
+    setLastSelected(selected)
+    setSelected(card)
+  }
 
   const handleOutsideClick = () => {
-    setLastSelected(selected);
-    setSelected(null);
-  };
+    setLastSelected(selected)
+    setSelected(null)
+  }
 
   return (
     <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3  max-w-7xl mx-auto gap-4 relative">
@@ -36,8 +36,8 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
               selected?.id === card.id
                 ? "rounded-lg cursor-pointer absolute inset-0 h-1/2 w-full md:w-1/2 m-auto z-50 flex justify-center items-center flex-wrap flex-col"
                 : lastSelected?.id === card.id
-                ? "z-40 bg-white rounded-xl h-full w-full"
-                : "bg-white rounded-xl h-full w-full"
+                  ? "z-40 bg-white rounded-xl h-full w-full"
+                  : "bg-white rounded-xl h-full w-full",
             )}
             layoutId={`card-${card.id}`}
           >
@@ -50,13 +50,13 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
         onClick={handleOutsideClick}
         className={cn(
           "absolute h-full w-full left-0 top-0 bg-black opacity-0 z-10",
-          selected?.id ? "pointer-events-auto" : "pointer-events-none"
+          selected?.id ? "pointer-events-auto" : "pointer-events-none",
         )}
         animate={{ opacity: selected?.id ? 0.3 : 0 }}
       />
     </div>
-  );
-};
+  )
+}
 
 const ImageComponent = ({ card }: { card: Card }) => {
   return (
@@ -66,12 +66,12 @@ const ImageComponent = ({ card }: { card: Card }) => {
       height="500"
       width="500"
       className={cn(
-        "object-cover object-top absolute inset-0 h-full w-full transition duration-200"
+        "object-cover object-top absolute inset-0 h-full w-full transition duration-200",
       )}
       alt="thumbnail"
     />
-  );
-};
+  )
+}
 
 const SelectedCard = ({ selected }: { selected: Card | null }) => {
   return (
@@ -108,5 +108,5 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
         {selected?.content}
       </motion.div>
     </div>
-  );
-};
+  )
+}

@@ -1,15 +1,15 @@
-'use client'
-import { useRouter } from 'next/navigation'
-import { useRef, useState } from 'react'
-import Logo from '@/components/shared/Logo'
-import { useAuth } from '@/app/data/contexts/AuthContext'
-import CpfUtils from '../utils/CpfUtils'
-import NascimentoUtils from '../utils/NascimentoUtils'
+"use client"
+import { useRouter } from "next/navigation"
+import { useRef, useState } from "react"
+import Logo from "@/components/shared/Logo"
+import { useAuth } from "@/app/data/contexts/AuthContext"
+import CpfUtils from "../utils/CpfUtils"
+import NascimentoUtils from "../utils/NascimentoUtils"
 
 export default function FormUsuario() {
   const { login } = useAuth()
-  const [cpf, setCpf] = useState('')
-  const [nascimento, setNascimento] = useState('')
+  const [cpf, setCpf] = useState("")
+  const [nascimento, setNascimento] = useState("")
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const router = useRouter()
 
@@ -22,16 +22,21 @@ export default function FormUsuario() {
       await login(cpf, nascimento)
       setErrorMessage(null)
     } catch (error) {
-      if(error instanceof Error) {
+      if (error instanceof Error) {
         setErrorMessage(error.message)
       } else {
-        setErrorMessage('Falha ao fazer login. Verifique suas credenciais e tente novamente.')
+        setErrorMessage(
+          "Falha ao fazer login. Verifique suas credenciais e tente novamente.",
+        )
       }
     }
   }
 
-  const handleKey = (e: React.KeyboardEvent, nextRef: React.RefObject<HTMLElement> | null) => {
-    if (e.key === 'Enter') {
+  const handleKey = (
+    e: React.KeyboardEvent,
+    nextRef: React.RefObject<HTMLElement> | null,
+  ) => {
+    if (e.key === "Enter") {
       e.preventDefault()
       if (nextRef) {
         nextRef.current?.focus()
@@ -75,7 +80,7 @@ export default function FormUsuario() {
                 className="bg-zinc-900 px-4 py-2 rounded"
               />
               {errorMessage && (
-                <span className='text-red-500 text-xs'>{errorMessage}</span>
+                <span className="text-red-500 text-xs">{errorMessage}</span>
               )}
               <div className="flex gap-5">
                 <button
@@ -85,7 +90,7 @@ export default function FormUsuario() {
                   Entrar
                 </button>
                 <button
-                  onClick={() => router.push('/')}
+                  onClick={() => router.push("/")}
                   className="button flex-1 hover:bg-zinc-700 active:bg-zinc-800"
                 >
                   Cancelar

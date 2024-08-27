@@ -1,3 +1,3 @@
-import Campanha from './Campanha'
+import Campanha from "./Campanha"
 
 export type { Campanha }
