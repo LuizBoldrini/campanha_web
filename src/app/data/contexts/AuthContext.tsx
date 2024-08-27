@@ -29,7 +29,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [get, remove])
 
-  const login = async (cpf: string, nascimento: string) => {
+  const login = async (cpf: string) => {
     try {
       const campanhaJson = get("campanha")
       const campanha = campanhaJson ? JSON.parse(campanhaJson) : null
@@ -43,7 +43,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         "/login",
         {
           cpf,
-          nascimento,
         },
         {
           headers: {
@@ -54,7 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       )
 
       const data = response.data
-      if (data.erro === "True") {
+      if (data.erro === "True" || data.erro === "true") {
         throw new Error(data.mensagem)
       }
 
