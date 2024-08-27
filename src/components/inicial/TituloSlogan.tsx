@@ -1,8 +1,10 @@
 "use client"
+import { useAuth } from "@/app/data/contexts/AuthContext"
 import Image from "next/image"
 import Link from "next/link"
 
 export default function TituloSlogan() {
+  const { logout } = useAuth()
   return (
     <div className="relative h-[400px] w-full">
       <div
@@ -25,6 +27,7 @@ export default function TituloSlogan() {
             Realize sua votação de forma segura e rápida!
           </p>
           <Link
+            onClick={logout}
             href="/campanha"
             className="
                             bg-green-600 text-white font-semibold text-base md:text-lg

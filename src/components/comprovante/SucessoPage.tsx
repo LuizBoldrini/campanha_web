@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation"
 import Carregando from "../shared/Carregando"
 import { Comprovante } from "@/model/comprovante"
 import { gerarPDF } from "@/components/utils/pdfGenerator"
+import { useAuth } from "@/app/data/contexts/AuthContext"
 
 export default function SucessoPage() {
   const [comprovante, setComprovante] = useState<Comprovante | null>(null)
   const [loading, setLoading] = useState(false)
   const { get } = useLocalStorage()
+  const { logout } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
@@ -19,8 +21,9 @@ export default function SucessoPage() {
     }
   }, [get])
 
-  const handleNavigate = (path: string) => {
+  const handleNavigate = async (path: string) => {
     setLoading(true)
+    await logout()
     setTimeout(() => {
       router.push(path)
     }, 500)
@@ -99,7 +102,9 @@ export default function SucessoPage() {
             Baixar Comprovante
           </button>
           <button
-            onClick={() => handleNavigate("/campanha")}
+            onClick={() => {
+              handleNavigate("/campanha")
+            }}
             className="
                     bg-zinc-600 text-white font-semibold text-base md:text-lg
                     py-2 px-4 rounded-md hover:bg-zinc-700 active:bg-zinc-800

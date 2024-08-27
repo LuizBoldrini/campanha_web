@@ -8,7 +8,7 @@ import { AxiosError } from "axios"
 import Logo from "../shared/Logo"
 
 export default function Verificacao() {
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
   const { get } = useLocalStorage()
   const [codigoDigitado, setCodigoDigitado] = useState("")
   const [codigoEnviado, setCodigoEnviado] = useState("")
@@ -19,16 +19,15 @@ export default function Verificacao() {
 
   const enviarCodigoVerificacao = async () => {
     try {
-      const campanhaJson = get("campanha")
-      const campanha = campanhaJson ? JSON.parse(campanhaJson) : null
-      const token = campanha?.token || ""
-      const idAssociado = user?.Associado[0]?.idassociado || 0
+      const token = JSON.parse(get("campanha")).token
+      const idAssociado = user.Associado[0].idassociado || 0
+      const whatsapp = user?.Associado[0]?.whatsapp || ""
 
       const response = await axiosCliente.post(
         "/campanha/verificacao",
         {
-          idAssociado: idAssociado,
-          whatsapp: user?.Associado[0]?.whatsapp || "",
+          idassociado: idAssociado,
+          whatsapp: whatsapp,
         },
         {
           headers: {
@@ -102,7 +101,9 @@ export default function Verificacao() {
                 absolute top-0 left-0 w-full h-full
                 bg-black/80 md:bg-transparent md:bg-gradient-to-r from-black/30 via-black/90 to-black/30"
       >
-        <Logo />
+        <div onClick={logout}>
+          <Logo />
+        </div>
         <div className="flex flex-col w-full max-w-lg bg-zinc-800 p-10 rounded border border-zinc-700 shadow-lg">
           <div className="flex flex-col gap-3">
             <span className="text-center text-white">
