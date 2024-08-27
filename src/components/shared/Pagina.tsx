@@ -5,8 +5,8 @@ export interface PaginaProps {
 }
 export default function Pagina(props: PaginaProps) {
     return (
-        <div className="flex flex-col min-h-screen w-screen">
-            <main>{props.children}</main>
+        <div className="flex flex-col min-h-screen w-screen bg-zinc-900">
+            <main className='flex-grow'>{props.children}</main>
             <Rodape />
         </div>
     )
