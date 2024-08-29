@@ -14,6 +14,7 @@ import { Chapa } from "@/model/chapa"
 export default function ChapaItem() {
   const [chapas, setChapas] = useState<Chapa["Chapa"][]>([])
   const [loading, setLoading] = useState(true)
+  const [ip, setIp] = useState<string | null>(null)
   const { get, set } = useLocalStorage()
   const { user } = useAuth()
   const router = useRouter()
@@ -52,7 +53,18 @@ export default function ChapaItem() {
         setLoading(false)
       }
     }
+
+    async function buscaip() {
+      try {
+        const response = await fetch("https://api.ipify.org?format=json")
+        const data = await response.json()
+        setIp(data.ip)
+      } catch (error) {
+        console.log("Erro ao buscar o ip", error)
+      }
+    }
     getChapas()
+    buscaip()
   }, [get])
 
   const handleConfirm = async () => {
@@ -69,6 +81,7 @@ export default function ChapaItem() {
           {
             idchapa: selectedChapa.idchapa,
             idassociado: idAssociado,
+            ip: ip,
           },
           {
             headers: {
