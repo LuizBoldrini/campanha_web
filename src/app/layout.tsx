@@ -8,9 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Votação Online",
   description: "Realize sua votação de forma rápida e segura",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  icons: "/favicon.ico",
 }
 
 export default function RootLayout({
