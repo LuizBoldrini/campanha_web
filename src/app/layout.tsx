@@ -8,7 +8,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Votação Online",
   description: "Realize sua votação de forma rápida e segura",
-  icons: "/favicon.ico",
 }
 
 export default function RootLayout({
@@ -18,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className="dark">
+      <head>
+        <link rel="icon" href="/images/favicon.ico" />
+      </head>
       <body className={`${inter.className} overflow-x-hidden`}>
         <AuthProvider>{children}</AuthProvider>
       </body>
