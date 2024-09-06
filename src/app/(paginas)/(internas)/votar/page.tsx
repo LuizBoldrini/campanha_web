@@ -1,4 +1,4 @@
-import BloquearVoltar from "@/components/shared/BloqueiaVoltar"
+import BloquearVoltar from "@/components/shared/BloquearVoltar"
 import NossasChapas from "@/components/votar/NossasChapas"
 
 export default function Votar() {
