@@ -1,3 +1,4 @@
+import BloquearVoltar from "@/components/shared/BloqueiaVoltar"
 import NossasChapas from "@/components/votar/NossasChapas"
 
 export default function Votar() {
@@ -11,6 +12,7 @@ export default function Votar() {
             "
       >
         <NossasChapas />
+        <BloquearVoltar />
       </div>
     </div>
   )
