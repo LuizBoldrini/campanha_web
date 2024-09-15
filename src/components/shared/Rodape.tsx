@@ -14,11 +14,13 @@ export default function Rodape() {
             <span className="text-2xl text-zinc-300 font-bold mb-2.5">
               Sobre
             </span>
-            <span className="text-sm text-zinc-400">Nossa História</span>
-            <span className="text-sm text-zinc-400">
+            <span className="text-sm text-zinc-400 hover:text-zinc-200 hover:font-bold">
+              <Link href="/comoVotar">Como Votar</Link>
+            </span>
+            <span className="text-sm text-zinc-400 hover:text-zinc-200 hover:font-bold">
               <Link href="/politicaPrivacidade">Política de Privacidade</Link>
             </span>
-            <span className="text-sm text-zinc-400">
+            <span className="text-sm text-zinc-400 hover:text-zinc-200 hover:font-bold">
               <Link href="/termoDeUso">Termos de Uso</Link>
             </span>
           </div>
@@ -26,9 +28,11 @@ export default function Rodape() {
             <span className="text-2xl text-zinc-300 font-bold mb-2.5">
               Contato
             </span>
-            <span className="text-sm text-zinc-400">asmuv_vha@hotmail.com</span>
+            <span className="text-sm text-zinc-400 hover:text-zinc-200 hover:font-bold">
+              asmuv_vha@hotmail.com
+            </span>
             <Link href={`https://wa.me/556933222335`} target="_blank">
-              <div className="flex items-center gap-1 text-sm text-zinc-400">
+              <div className="flex items-center gap-1 text-sm text-zinc-400 hover:text-zinc-200 hover:font-bold">
                 <IconBrandWhatsapp size={24} className="text-green-500" />
                 <span>69 3322-2335</span>
               </div>
@@ -36,16 +40,18 @@ export default function Rodape() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-5">
-          <div className="flex gap-2 text-zinc-400">
+          <div className="flex gap-2 text-zinc-400 ">
             <Link
               href="https://www.instagram.com/asmuvvha?igsh=Z282ZGRodnB1MG1h"
               target="_blank"
+              className="hover:text-zinc-200 hover:font-bold"
             >
               <IconBrandInstagram size={28} stroke={1} />
             </Link>
             <Link
               href="https://www.facebook.com/profile.php?id=100063554530983&locale=pt_BR"
               target="_blank"
+              className="hover:text-zinc-200 hover:font-bold"
             >
               <IconBrandFacebook size={28} stroke={1} />
             </Link>
@@ -56,7 +62,7 @@ export default function Rodape() {
               <Link href={`https://wa.me/556993414639`} target="_blank">
                 <div className="flex items-center gap-1">
                   <IconBrandWhatsapp size={18} className="text-green-500" />
-                  <span>
+                  <span className="hover:text-zinc-200 hover:font-bold">
                     <strong>EasyVote Systems</strong>
                   </span>
                 </div>
