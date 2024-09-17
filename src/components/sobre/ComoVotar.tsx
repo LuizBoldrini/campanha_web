@@ -14,7 +14,7 @@ export default function ComoVotar() {
   }
 
   return (
-    <div className="flex flex-col gap-4 p-4 bg-zinc-800 text-zinc-100 rounded-xl pr-6 md:pr-12">
+    <div className="flex flex-col gap-4 p-4 px-10 bg-zinc-800 text-zinc-100 rounded-xl pr-6 md:pr-12">
       <h1 className="text-2xl font-bold">Tutorial de Votação</h1>
 
       <MostraImagemTutorial src="/images/paginaIncial.png" alt="Página inicial">
