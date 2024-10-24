@@ -18,12 +18,12 @@ export default function Logo() {
         height={50}
         className="block sm:hidden"
       />
-      <div className="flex flex-col justify-center h-full p-2">
-        <span className="text-xl sm:text-2xl font-extralight leading-6 tracking-widest text-gradient">
-          Votação
+      <div className="flex flex-col justify-center h-full p-1">
+        <span className="text-xl sm:text-2l font-extralight leading-4 tracking-widest">
+          EasyVote
         </span>
-        <span className="text-[20px] sm:text-[24px] font-bold leading-6 pl-px text-gradient">
-          Online
+        <span className="text-[14px] sm:text-[18px] font-bold leading-4 px-12">
+          Systems
         </span>
       </div>
     </Link>

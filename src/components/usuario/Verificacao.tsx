@@ -12,7 +12,7 @@ export default function Verificacao() {
   const { get } = useLocalStorage()
   const [codigoDigitado, setCodigoDigitado] = useState("")
   const [codigoEnviado, setCodigoEnviado] = useState("")
-  const [tempoRestante, setTempoRestante] = useState<number>(60)
+  const [tempoRestante, setTempoRestante] = useState<number>(120)
   const [mensagemErro, setMensagemErro] = useState<string | null>(null)
   const [podeReenviar, setPodeReenviar] = useState<boolean>(false)
   const router = useRouter()
@@ -41,7 +41,7 @@ export default function Verificacao() {
 
       if (data.erro === "false") {
         setCodigoEnviado(data.code)
-        setTempoRestante(60)
+        setTempoRestante(120)
         setPodeReenviar(false)
       } else {
         setMensagemErro(
