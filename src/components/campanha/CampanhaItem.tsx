@@ -99,8 +99,10 @@ export default function CampanhaItem() {
                     </span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <span className="text-lg font-bold">Sobre</span>
-                    <span className="text-sm text-wrap max-w-96 font-bold text-zinc-200">
+                    <span
+                      className="text-sm font-bold text-zinc-200 text-wrap max-w-96"
+                      style={{ whiteSpace: "pre-line" }}
+                    >
                       {campanha.detalhes}
                     </span>
                   </div>
